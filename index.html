@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlinkJS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-white text-black">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-lg font-bold">BlinkJS</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-sm hover:text-gray-600 transition-colors relative group">
+                    Features
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#" class="text-sm hover:text-gray-600 transition-colors relative group">
+                    Playground
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+
+            <a href="https://github.com" target="_blank" class="px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 text-sm font-medium flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold text-center mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s">
+                Write Code.<br><span class="bg-black text-white px-6 py-3 rounded-lg inline-block mt-4 -rotate-1">See Results Instantly</span>
+            </h1>
+
+            <p class="text-gray-600 text-lg text-center max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
+                A modern JavaScript playground for coding, learning, and interviews. Write code, execute instantly, see the output.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
+                <a href="playground.html" class="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300">
+                    Start Coding
+                </a>
+                <button class="px-8 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-black hover:text-white transition-all duration-300">
+                    Learn More
+                </button>
+            </div>
+
+            <!-- Code Editor Preview -->
+            <div class="max-w-4xl rounded-3xl mx-auto opacity-0 animate-fade-in-up" style="animation-delay: 0.4s; box-shadow: 0 0 60px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.05);">
+                <div class="bg-white bg-opacity-60 backdrop-blur-3xl border border-black border-opacity-10 rounded-3xl p-6">
+                    <div class="mb-4">
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mb-4">example.js</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 font-mono text-sm">
+                        <div style="color: #999;">// Your code here</div>
+                        <div><span style="color: #d73a49;">const</span> greeting = <span style="color: #032f62;">"Hello, World!"</span>;</div>
+                        <div>console.<span style="color: #6f42c1;">log</span>(greeting);</div>
+                    </div>
+                    <div class="text-xs text-gray-500 mb-2">Console Output</div>
+                    <div class="bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-sm">
+                        <div>Hello, World!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Built for Real People</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8 hover:bg-opacity-80 hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="w-12 h-12 rounded-lg bg-black text-white flex items-center justify-center mb-4 text-xl">🚀</div>
+                    <h3 class="font-semibold mb-3 text-lg">Runs as You Type</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">No run button, no waiting — just type your code and instantly see what happens.</p>
+                </div>
+
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8 hover:bg-opacity-80 hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s">
+                    <div class="w-12 h-12 rounded-lg bg-black text-white flex items-center justify-center mb-4 text-xl">🧠</div>
+                    <h3 class="font-semibold mb-3 text-lg">Editor You'll Actually Enjoy</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Monaco powers VS Code — so you get real syntax highlighting and a smooth typing experience.</p>
+                </div>
+
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8 hover:bg-opacity-80 hover:-translate-y-2 transition-all duration-300 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s">
+                    <div class="w-12 h-12 rounded-lg bg-black text-white flex items-center justify-center mb-4 text-xl">📟</div>
+                    <h3 class="font-semibold mb-3 text-lg">Output That Makes Sense</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Logs, errors, and results show up cleanly with colors — no staring at plain text walls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
+                Ready to Code?
+            </h2>
+            <p class="text-gray-600 mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
+                Start learning JavaScript right now.
+            </p>
+            <a href="playground.html" class="inline-block px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
+                Open Playground
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <span class="text-sm text-gray-600">BlinkJS</span>
+            <span class="text-xs text-gray-400">© 2025</span>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            margin: 0.5rem 5rem 0;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled div {
+            max-width: 100%;
+        }
+    </style>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const isAtBottom = window.scrollY > 100;
+
+            if (isAtBottom) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
