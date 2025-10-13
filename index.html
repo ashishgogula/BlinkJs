@@ -24,7 +24,7 @@
                     Features
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#" class="text-sm hover:text-gray-600 transition-colors relative group">
+                <a href="https://github.com/ashishgogula/BlinkJs" target="_blank" class="text-sm hover:text-gray-600 transition-colors relative group">
                     Playground
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></span>
                 </a>
@@ -42,21 +42,19 @@
     <!-- Hero Section -->
     <section class="pt-32 pb-20 px-6">
         <div class="max-w-6xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold text-center mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s">
-                Write Code.<br><span class="bg-black text-white px-6 py-3 rounded-lg inline-block mt-4 -rotate-1">See Results Instantly</span>
+            <h1 class="text-5xl md:text-6xl font-bold text-center mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
+                Write Code.<br><span class="bg-red-500 text-white px-6 pb-4 rounded-lg inline-block my-6 hover:scale-110 transition-all duration-300 cursor-pointer">See Results Instantly.</span> 
             </h1>
 
-            <p class="text-gray-600 text-lg text-center max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
-                A modern JavaScript playground for coding, learning, and interviews. Write code, execute instantly, see the output.
+            <p class="text-gray-600 text-lg text-center max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
+                A modern JavaScript playground for coding, learning, and interviews. 
+                Write code, execute instantly, see the output.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
                 <a href="playground.html" class="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300">
                     Start Coding
                 </a>
-                <button class="px-8 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-black hover:text-white transition-all duration-300">
-                    Learn More
-                </button>
             </div>
 
             <!-- Code Editor Preview -->
@@ -134,48 +132,8 @@
         </div>
     </footer>
 
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            margin: 0.5rem 5rem 0;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.scrolled div {
-            max-width: 100%;
-        }
-    </style>
-
     <script>
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', () => {
-            const isAtBottom = window.scrollY > 100;
-
-            if (isAtBottom) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        
     </script>
 </body>
 

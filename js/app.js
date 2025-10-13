@@ -1,6 +1,6 @@
-require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs' }});
+require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs' } });
 
-require(['vs/editor/editor.main'], function() {
+require(['vs/editor/editor.main'], function () {
   monaco.editor.defineTheme('flat-arc-italic', {
     base: 'vs-dark',
     inherit: true,
@@ -69,16 +69,16 @@ console.log = (...args) => {
     }
     return String(arg);
   });
-  
+
   const output = formattedArgs.join(' ');
   const span = document.createElement('span');
   span.classList.add('success');
   span.textContent = output + '\n';
   span.style.fontFamily = "'JetBrains Mono', Consolas, 'Courier New', monospace";
-  
+
   consoleOutput.appendChild(span);
   consoleOutput.scrollTop = consoleOutput.scrollHeight;
-  
+
   span.animate([
     { opacity: 0, transform: 'translateX(-5px)' },
     { opacity: 1, transform: 'translateX(0)' }
@@ -98,16 +98,16 @@ console.error = (...args) => {
     }
     return String(arg);
   });
-  
+
   const output = 'Error: ' + formattedArgs.join(' ');
   const span = document.createElement('span');
   span.classList.add('error');
   span.textContent = output + '\n';
   span.style.fontFamily = "'JetBrains Mono', Consolas, 'Courier New', monospace";
-  
+
   consoleOutput.appendChild(span);
   consoleOutput.scrollTop = consoleOutput.scrollHeight;
-  
+
   span.animate([
     { opacity: 0, transform: 'translateX(-5px)' },
     { opacity: 1, transform: 'translateX(0)' }
@@ -129,7 +129,7 @@ function runCode() {
 
 function debounce(fn, delay) {
   let timer;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(this, args), delay);
   }
@@ -144,7 +144,7 @@ window.addEventListener('load', () => {
 });
 
 if (clearConsoleBtn) {
-  clearConsoleBtn.addEventListener('click', function() {
+  clearConsoleBtn.addEventListener('click', function () {
     clearConsole();
     this.classList.add('bg-blue-700');
     setTimeout(() => {
@@ -166,7 +166,7 @@ dragHandle.addEventListener('mousedown', (e) => {
   e.preventDefault();
   isResizing = true;
   startY = e.clientY;
-  
+
   dragHandle.style.backgroundColor = '#60a5fa';
   document.body.style.cursor = 'ns-resize';
   document.body.style.userSelect = 'none';
@@ -174,18 +174,18 @@ dragHandle.addEventListener('mousedown', (e) => {
 
 document.addEventListener('mousemove', (e) => {
   if (!isResizing) return;
-  
+
   const deltaY = e.clientY - startY;
   const newEditorHeight = editorContainer.offsetHeight + deltaY;
   const newConsoleHeight = consoleContainer.offsetHeight - deltaY;
-  
+
   // Min height constraint: 100px
   if (newEditorHeight > 100 && newConsoleHeight > 100) {
     editorContainer.style.flex = `0 0 ${newEditorHeight}px`;
     consoleContainer.style.flex = `0 0 ${newConsoleHeight}px`;
-    
+
     startY = e.clientY;
-    
+
     if (window.editor) {
       window.editor.layout();
     }
@@ -198,7 +198,7 @@ document.addEventListener('mouseup', () => {
     dragHandle.style.backgroundColor = '';
     document.body.style.cursor = 'default';
     document.body.style.userSelect = 'auto';
-    
+
     if (window.editor) {
       window.editor.layout();
     }
@@ -209,10 +209,10 @@ document.addEventListener('mouseup', () => {
 dragHandle.addEventListener('dblclick', () => {
   const totalHeight = mainContainer.offsetHeight - 16;
   const halfHeight = totalHeight / 2;
-  
+
   editorContainer.style.flex = `0 0 ${halfHeight}px`;
   consoleContainer.style.flex = `0 0 ${halfHeight}px`;
-  
+
   if (window.editor) {
     window.editor.layout();
   }
@@ -225,7 +225,7 @@ const successBg = 'rgba(16, 185, 129, 0.1)';
 const observer = new MutationObserver(() => {
   if (consoleOutput.textContent.includes('Error:')) {
     consoleContainer.style.backgroundColor = errorBg;
-    
+
     consoleContainer.animate([
       { transform: 'translateX(0)' },
       { transform: 'translateX(-3px)' },
@@ -236,7 +236,7 @@ const observer = new MutationObserver(() => {
       duration: 400,
       easing: 'ease-in-out'
     });
-    
+
     setTimeout(() => {
       consoleContainer.style.backgroundColor = '';
     }, 1000);
@@ -249,3 +249,16 @@ const observer = new MutationObserver(() => {
 });
 
 observer.observe(consoleOutput, { childList: true, subtree: true });
+
+// ==================== NAVBAR SCROLL ANIMATION ====================
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  const isAtBottom = window.scrollY > 100;
+
+  if (isAtBottom) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
