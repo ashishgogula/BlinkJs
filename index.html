@@ -34,13 +34,16 @@
             </div>
 
             <a href="https://github.com/ashishgogula/BlinkJs" target="_blank"
-                class="px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 text-sm font-medium flex items-center gap-2">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                class="px-4 py-2 border-2 border-black rounded-full hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 text-sm font-medium flex items-center gap-2 relative group">
+                <svg class="w-4 h-4 relative z-10 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
                     </path>
                 </svg>
-                GitHub
+                <span class="relative z-10 group-hover:text-white transition-colors duration-300">GitHub</span>
+                <div
+                    class="absolute inset-0 scale-0 transform rounded-full bg-black opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 ">
+                </div>
             </a>
         </div>
     </nav>
@@ -61,13 +64,25 @@
                 Write code, execute instantly, see the output.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-fade-in-up"
-                style="animation-delay: 0.3s">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-fade-in-up relative  "
+                style="animation-delay: 0.3s ">
+
                 <a href="playground.html"
-                    class="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300">
+                    class="px-8 py-3 bg-black rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 z-10 relative border-2 border-black box-border group">
+
+                    <span
+                    class="relative z-10 text-white transition-colors duration-300 group-hover:text-black ">
                     Start Coding
+                    </span>
+
+                    <div
+                        class="absolute inset-0 scale-0 transform rounded-full bg-white opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 ">
+                    </div>
+
                 </a>
+                
             </div>
+            
 
             <!-- Code Editor Preview -->
             <div class="max-w-4xl rounded-3xl mx-auto opacity-0 animate-fade-in-up"
@@ -112,47 +127,50 @@
     <!-- Features Section -->
     <section id="features" class="py-20 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4">
-  <h2 class="text-4xl font-bold text-center mb-16">Built for Real People</h2>
+            <h2 class="text-4xl font-bold text-center mb-16">Built for Real People</h2>
 
-  <div class="grid md:grid-cols-3 gap-6">
-  <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
               transition-all duration-300 hover:bg-opacity-80 hover:-translate-y-2 hover:scale-105 hover:shadow-xl cursor-pointer animate-fade-up opacity-0"
-       style="animation: slideIn 0.5s forwards; animation-delay: 0.2s;">
-    <div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-      🚀
-    </div>
-    <h3 class="font-semibold mb-3 text-lg">Runs as You Type</h3>
-    <p class="text-gray-600 text-sm leading-relaxed">
-      No run button, no waiting — just type your code and instantly see what happens.
-    </p>
-  </div>
+                    style="animation: slideIn 0.5s forwards; animation-delay: 0.2s;">
+                    <div
+                        class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
+                        🚀
+                    </div>
+                    <h3 class="font-semibold mb-3 text-lg">Runs as You Type</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        No run button, no waiting — just type your code and instantly see what happens.
+                    </p>
+                </div>
 
-  <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
               transition-all duration-300 hover:bg-opacity-80 hover:-translate-y-2 hover:scale-105 hover:shadow-xl cursor-pointer animate-fade-up opacity-0"
-       style="animation: slideIn 0.5s forwards; animation-delay: 0.4s;">
-    <div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-4 text-xl">
-      🧠
-    </div>
-    <h3 class="font-semibold mb-3 text-lg">Editor You'll Actually Enjoy</h3>
-    <p class="text-gray-600 text-sm leading-relaxed">
-      Monaco powers VS Code — so you get real syntax highlighting and a smooth typing experience.
-    </p>
-  </div>
+                    style="animation: slideIn 0.5s forwards; animation-delay: 0.4s;">
+                    <div
+                        class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-4 text-xl">
+                        🧠
+                    </div>
+                    <h3 class="font-semibold mb-3 text-lg">Editor You'll Actually Enjoy</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Monaco powers VS Code — so you get real syntax highlighting and a smooth typing experience.
+                    </p>
+                </div>
 
-  <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
+                <div class="bg-white bg-opacity-60 backdrop-blur-2xl border border-black border-opacity-10 rounded-2xl p-8
               transition-all duration-300 hover:bg-opacity-80 hover:-translate-y-2 hover:scale-105 hover:shadow-xl cursor-pointer animate-fade-up opacity-0"
-       style="animation: slideIn 0.5s forwards; animation-delay: 0.6s;">
-    <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mb-4 text-xl">
-      📟
-    </div>
-    <h3 class="font-semibold mb-3 text-lg">Output That Makes Sense</h3>
-    <p class="text-gray-600 text-sm leading-relaxed">
-      Logs, errors, and results show up cleanly with colors — no staring at plain text walls.
-    </p>
-  </div>
-</div>
+                    style="animation: slideIn 0.5s forwards; animation-delay: 0.6s;">
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mb-4 text-xl">
+                        📟
+                    </div>
+                    <h3 class="font-semibold mb-3 text-lg">Output That Makes Sense</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Logs, errors, and results show up cleanly with colors — no staring at plain text walls.
+                    </p>
+                </div>
+            </div>
 
-</div>
+        </div>
     </section>
 
     <!-- CTA Section -->
@@ -164,11 +182,23 @@
             <p class="text-gray-600 mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
                 Start learning JavaScript right now.
             </p>
+
             <a href="playground.html"
-                class="inline-block px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 animate-fade-in-up"
+                class="inline-block px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 z-10 relative border-2 border-black box-border group"
                 style="animation-delay: 0.4s">
-                Open Playground
+                
+
+                <span
+                    class="relative z-10 text-white transition-colors duration-300 group-hover:text-black ">
+                    Open Playground
+                    </span>
+
+                    <div
+                        class="absolute inset-0 scale-0 transform rounded-full bg-white opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 ">
+                    </div>
+
             </a>
+
         </div>
     </section>
 
