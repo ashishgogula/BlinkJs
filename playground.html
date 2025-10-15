@@ -13,25 +13,53 @@
 
 <body class="bg-black text-white p-4 h-screen">
 
-    <div class="flex flex-col h-full" id="mainContainer">
+    <div class="flex flex-col h-full w-full" id="mainContainer">
+
         <div id="editorContainer"
             class="draggable-block rounded-lg overflow-hidden shadow-lg border border-gray-700 flex-1"
             style="min-height: 0;">
-            <div class="header-drag-handle bg-gray-800 px-4 py-2 border-b border-gray-700 flex items-center cursor-move transition-all duration-300 hover:bg-gray-700"
+
+            <div class="header-drag-handle bg-gray-800 px-4 py-2 border-b border-gray-700 flex justify-between cursor-move transition-all duration-300 hover:bg-gray-700"
                 id="editorHeader">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+
+                <div class="flex flex-row items-center">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 <span>script.js</span>
             </div>
+
+                <div class="flex gap-2 py-1 align-center justify-center">
+
+                    
+                    <button id="switchLayout"
+                        class="ml-auto font-mono px-3 py-1 hover:bg-blue-700 hover:scale-105 rounded-md transition-all font-semibold active:scale-95 ">
+                    </button>
+                    
+                    <button id="switchOrientation"
+                        class="ml-auto font-mono px-3 py-1 hover:bg-blue-700 hover:scale-105 rounded-md transition-all font-semibold active:scale-95 ">
+                        Switch Orientation
+                    </button>
+
+                </div>
+
+            </div>
+            
             <div id="editor" class="h-[calc(100%-40px)]"></div>
         </div>
 
         <div id="dragHandle"
-            class="resize-handle cursor-ns-resize h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 hover:via-blue-400 flex-shrink-0"
-            style="margin: 8px 0;"></div>
+            class="resize-handle cursor-ns-resize 
+            h-1
+            bg-gradient-to-r from-transparent via-blue-500 to-transparent 
+            hover:via-blue-400 flex-shrink-0
+            transition-all duration-300
+            "
+            style="margin: 8px 0;">
+        </div>
 
         <div id="consoleContainer"
             class="draggable-block rounded-lg overflow-hidden shadow-lg border border-gray-700 flex-1"
