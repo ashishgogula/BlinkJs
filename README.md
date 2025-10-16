@@ -10,7 +10,7 @@ BlinkJs is a modern, lightweight JavaScript playground designed for developers, 
 
 🌐 **Live Demo:** [blink-js.vercel.app](https://blink-js.vercel.app/)
 
-<img width="1365" height="763" alt="image" src="https://github.com/user-attachments/assets/b0672686-ea05-4b15-88c1-94d919ff2599" />
+<img width="1365" height="766" alt="image" src="https://github.com/user-attachments/assets/9cd7ceea-2e74-4828-adf0-ef5ddee100b8" />
 
 <img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/c8de30d6-360e-4738-9a6e-9329ac36560e" />
 
