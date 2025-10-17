@@ -1,4 +1,5 @@
-# 🚀 BlinkJs - Modern JavaScript Playground
+🚀 BlinkJs - Modern JavaScript Playground
+
 [![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-blueviolet.svg)](https://hacktoberfest.com/)
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://blink-js.vercel.app/)
 [![Issues](https://img.shields.io/github/issues/ashishgogula/BlinkJs)](https://github.com/ashishgogula/BlinkJs/issues)
@@ -10,10 +11,9 @@ BlinkJs is a modern, lightweight JavaScript playground designed for developers, 
 
 🌐 **Live Demo:** [blink-js.vercel.app](https://blink-js.vercel.app/)
 
-<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/0d85aebc-82ad-4bdc-9e8e-d3a49a3aed22" />
-<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/89a81975-9f20-4dce-9f91-55ff20b045bd" />
+<img width="1365" height="766" alt="image" src="https://github.com/user-attachments/assets/9cd7ceea-2e74-4828-adf0-ef5ddee100b8" />
 
-
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/c8de30d6-360e-4738-9a6e-9329ac36560e" />
 
 ## ✨ Features
 
@@ -33,18 +33,62 @@ BlinkJs is a modern, lightweight JavaScript playground designed for developers, 
 3. View the output in the console panel
 4. Experiment, learn, and have fun!
 
+## 🤝 Contributing
+
+We welcome contributions from developers of all skill levels! **Important: All pull requests should be raised against the `dev` branch, not `main`.**
+
+### For Beginners: Step-by-Step Guide
+
+If you're new to contributing to open source, follow these steps:
+
+#### 1. Fork the Repository
+Click the "Fork" button at the top right of this repository to create your own copy.
+
+#### 2. Clone Your Fork
+```bash
+git clone https://github.com/YOUR-USERNAME/BlinkJs.git
+cd BlinkJs
+```
+
+#### 3. Create a New Branch
+```bash
+git checkout -b your-feature-name
+```
+
+#### 4. Make Your Changes
+Edit the files, add features, fix bugs, or improve documentation.
+
+#### 5. Commit Your Changes
+```bash
+git add .
+git commit -m "Add: brief description of your changes"
+```
+
+#### 6. Push to Your Fork
+```bash
+git push origin your-feature-name
+```
+
+#### 7. Create a Pull Request
+- Go to your fork on GitHub
+- Click "Compare & pull request"
+- **Important:** Make sure the base branch is set to `dev`, not `main`
+- Fill in the PR description with details about your changes
+- Submit the pull request!
+
+### Contribution Guidelines
+
+- Write clean, readable code
+- Test your changes before submitting
+- Follow existing code style and conventions
+- Update documentation if needed
+- Be respectful and constructive in discussions
+
 ## 🎃 Hacktoberfest 2025 - Join Us!
 
 **BlinkJs is participating in Hacktoberfest 2025!** We're excited to welcome contributors from around the world to help make this JavaScript playground even better.
 
-### 🛠️ Tech Stack
-This project is built with **pure web technologies**:
-- **HTML5** - Clean, semantic markup
-- **Tailwind CSS** - Modern styling 
-- **Vanilla JavaScript** - No frameworks, no dependencies
-- **Framer Motion** - Animations
-- **No build tools** - Simple, accessible codebase
-- **No tests required** - Focus on creativity and user experience
+**Note:** PRs should target the `dev` branch.
 
 ### 🎨 What We're Looking For
 
@@ -92,35 +136,6 @@ We're especially interested in contributions that enhance the visual experience 
 - Performance optimizations
 - Save File
 
-### 🤝 How to Contribute
-
-1. **Fork the Repository**
-   ```bash
-   git clone https://github.com/ashishgogula/BlinkJs.git
-   cd BlinkJs
-   ```
-
-2. **Create a Feature Branch**
-   ```bash
-   git checkout -b feature/your-awesome-feature
-   ```
-
-3. **Make Your Changes**
-   - Edit HTML, CSS, or JavaScript files directly
-   - No build process needed - just open `index.html` in your browser
-   - Test your changes across different devices and browsers
-
-4. **Follow Our Guidelines**
-   - Keep code clean and well-commented
-   - Ensure mobile responsiveness
-   - Test accessibility features
-   - Maintain the existing code style
-
-5. **Submit a Pull Request**
-   - Describe your changes clearly
-   - Include screenshots for UI changes
-   - Reference any related issues
-
 ## 🚀 Continuous Deployment with Vercel
 
 BlinkJs uses **Vercel** for automatic deployment:
@@ -143,7 +158,9 @@ This setup means contributors can quickly see their improvements reflected in th
 ---
 
 <div align="center">
+  
   <strong>Happy Hacking! 🚀</strong>
+
   
   Made with ❤️ for the developer community
   

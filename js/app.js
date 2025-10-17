@@ -1,27 +1,27 @@
 require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs' } });
 
 require(['vs/editor/editor.main'], function () {
-  monaco.editor.defineTheme('flat-arc-italic', {
+  monaco.editor.defineTheme('blinkjs-dark', {
     base: 'vs-dark',
     inherit: true,
     rules: [
-      { token: '', foreground: 'C0CAF5', background: '1B1F2A' },
-      { token: 'keyword', foreground: 'FF5370', fontStyle: 'bold italic' },
-      { token: 'keyword.control', foreground: 'FF5370', fontStyle: 'bold italic' },
-      { token: 'number', foreground: 'FFCB6B', fontStyle: 'italic' },
-      { token: 'string', foreground: 'C3E88D', fontStyle: 'italic' },
-      { token: 'comment', foreground: '545862', fontStyle: 'italic' },
-      { token: 'type', foreground: '82AAFF', fontStyle: 'italic' },
-      { token: 'variable', foreground: 'C0CAF5', fontStyle: 'italic' },
-      { token: 'function', foreground: '7AA2F7', fontStyle: 'italic' },
-      { token: 'operator', foreground: 'C0CAF5', fontStyle: 'italic' }
+      { token: '', foreground: 'e0e0e0', background: '0a0a0a' },
+      { token: 'keyword', foreground: '22c55e', fontStyle: 'bold italic' },
+      { token: 'keyword.control', foreground: '22c55e', fontStyle: 'bold italic' },
+      { token: 'number', foreground: '86efac', fontStyle: 'italic' },
+      { token: 'string', foreground: '4ade80', fontStyle: 'italic' },
+      { token: 'comment', foreground: '6b7280', fontStyle: 'italic' },
+      { token: 'type', foreground: '86efac', fontStyle: 'italic' },
+      { token: 'variable', foreground: 'e0e0e0', fontStyle: 'italic' },
+      { token: 'function', foreground: '86efac', fontStyle: 'italic' },
+      { token: 'operator', foreground: '22c55e', fontStyle: 'italic' }
     ],
     colors: {
-      'editor.background': '#1B1F2A',
-      'editorLineNumber.foreground': '#545862',
-      'editorCursor.foreground': '#FF5370',
-      'editor.selectionBackground': '#3E445E',
-      'editor.lineHighlightBackground': '#2E3440'
+      'editor.background': '#0a0a0a',
+      'editorLineNumber.foreground': '#4b5563',
+      'editorCursor.foreground': '#22c55e',
+      'editor.selectionBackground': '#22c55e33',
+      'editor.lineHighlightBackground': '#1a1a1a'
     }
   });
 
@@ -34,7 +34,7 @@ for (let i = 0; i < 3; i++) {
   console.log(\`Count: \${i}\`);
 }`,
     language: 'javascript',
-    theme: 'flat-arc-italic',
+    theme: 'blinkjs-dark',
     automaticLayout: true,
     minimap: { enabled: false },
     scrollBeyondLastLine: false,
@@ -50,7 +50,6 @@ for (let i = 0; i < 3; i++) {
   window.editor.onDidChangeModelContent(debounce(runCode, 300));
   setTimeout(runCode, 500);
 });
-
 const consoleOutput = document.getElementById('consoleOutput');
 const homeBtn = document.getElementById('homeBtn');
 
@@ -382,15 +381,3 @@ const observer = new MutationObserver(() => {
 
 observer.observe(consoleOutput, { childList: true, subtree: true });
 
-// ==================== NAVBAR SCROLL ANIMATION ====================
-const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', () => {
-  const isAtBottom = window.scrollY > 100;
-
-  if (isAtBottom) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});

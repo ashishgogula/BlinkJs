@@ -16,7 +16,7 @@
     <div class="flex flex-col h-full w-full" id="mainContainer">
 
         <div id="editorContainer"
-            class="draggable-block rounded-lg overflow-hidden shadow-lg border border-gray-700 flex-1"
+            class="draggable-block rounded-lg overflow-hidden shadow-lg border border-green-500 border-opacity-30 flex-1"
             style="min-height: 0;">
 
             <div class="header-drag-handle bg-gray-800 px-4 py-2 border-b border-gray-700 flex justify-between cursor-move transition-all duration-300 hover:bg-gray-700"
@@ -29,7 +29,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
-                <span>script.js</span>
+                <span class="text-green-400">script.js</span>
             </div>
 
                 <div class="flex gap-2 py-1 align-center justify-center">
@@ -52,35 +52,29 @@
         </div>
 
         <div id="dragHandle"
-            class="resize-handle cursor-ns-resize 
-            h-1
-            bg-gradient-to-r from-transparent via-blue-500 to-transparent 
-            hover:via-blue-400 flex-shrink-0
-            transition-all duration-300
-            "
-            style="margin: 8px 0;">
-        </div>
+            class="resize-handle cursor-ns-resize h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent transition-all duration-300 hover:via-green-400 flex-shrink-0"
+            style="margin: 8px 0;"></div>
 
         <div id="consoleContainer"
-            class="draggable-block rounded-lg overflow-hidden shadow-lg border border-gray-700 flex-1"
+            class="draggable-block rounded-lg overflow-hidden shadow-lg border border-green-500 border-opacity-30 flex-1"
             style="min-height: 0;">
-            <div class="header-drag-handle bg-gray-800 px-4 border-b border-gray-700 flex justify-between items-center cursor-move hover:bg-gray-900"
+            <div class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 border-b border-green-500 border-opacity-30 flex justify-between items-center cursor-move hover:bg-opacity-80 hover:border-opacity-60"
                 id="consoleHeader">
                 <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Console</span>
+                    <span class="text-green-400">Console</span>
                 </div>
                 <div class="py-1 flex gap-2">
                     <button id="clearConsoleBtn"
-                        class="font-mono px-3 py-1  hover:bg-blue-700 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
                         Clear
                     </button>
                     <button id="homeBtn" onclick="window.location.href='index.html'"
-                        class="font-mono px-3 py-1 hover:bg-blue-700 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
                         Home
                     </button>
                 </div>
