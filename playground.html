@@ -29,11 +29,15 @@
 
                 </div>
                 <div class="py-1 flex gap-2">
-                    <button id="changeLayoutBtn"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                    <button id="switchPositionBtn"
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                        aria-label="Toggle editor/console positions"
+                        >
                     </button>
-                    <button id="changeOrientationBtn"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                    <button id="switchOrientationBtn"
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                        aria-label="Toggle horizontal/vertical layout"
+                        >
                         Switch Orientation
                     </button>
                 </div>
@@ -58,7 +62,9 @@
                     </svg>
                     <span class="text-green-400">Console</span>
                 </div>
+
                 <div class="py-1 flex gap-2">
+
                     <button id="clearConsoleBtn"
                         class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
                         Clear
