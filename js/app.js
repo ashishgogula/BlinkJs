@@ -245,40 +245,38 @@ function applyOrientation() {
 
 function handlingClasses() {
     if (isVertical) {
-      mainContainer.classList.add("flex-col");
-      mainContainer.classList.remove("flex-row");
+        mainContainer.classList.add("flex-col");
+        mainContainer.classList.remove("flex-row");
         
-      dragHandle.classList.add("cursor-ns-resize");
-      dragHandle.classList.remove("cursor-ew-resize");
-      
-      dragHandle.classList.add("h-1");
-      dragHandle.classList.add("w-full");
-      dragHandle.classList.remove("w-1");
-      dragHandle.classList.remove("h-full");
-      
-      dragHandle.classList.add("bg-gradient-to-r");
-      dragHandle.classList.remove("bg-gradient-to-b");
-      
-      dragHandle.style.margin = "8px 0";
+        dragHandle.classList.add("cursor-ns-resize");
+        dragHandle.classList.remove("cursor-ew-resize");
+        
+        dragHandle.classList.add("h-1");
+        dragHandle.classList.add("w-full");
+        dragHandle.classList.remove("w-1");
+        dragHandle.classList.remove("h-full");
+        
+        dragHandle.classList.add("bg-gradient-to-r");
+        dragHandle.classList.remove("bg-gradient-to-b");
+        
+        dragHandle.style.margin = "8px 0";
 
     } else {
+        mainContainer.classList.remove("flex-col");
+        mainContainer.classList.add("flex-row");
 
-      mainContainer.classList.remove("flex-col");
-      mainContainer.classList.add("flex-row");
-
-      dragHandle.classList.remove("cursor-ns-resize");
-      dragHandle.classList.add("cursor-ew-resize");
-      
-      dragHandle.classList.remove("h-1");
-      dragHandle.classList.remove("w-full");
-      dragHandle.classList.add("w-1");
-      dragHandle.classList.add("h-full");
-      
-      dragHandle.classList.remove("bg-gradient-to-r");
-      dragHandle.classList.add("bg-gradient-to-b");
-      
-      dragHandle.style.margin = "0 8px";
-      
+        dragHandle.classList.remove("cursor-ns-resize");
+        dragHandle.classList.add("cursor-ew-resize");
+        
+        dragHandle.classList.remove("h-1");
+        dragHandle.classList.remove("w-full");
+        dragHandle.classList.add("w-1");
+        dragHandle.classList.add("h-full");
+        
+        dragHandle.classList.remove("bg-gradient-to-r");
+        dragHandle.classList.add("bg-gradient-to-b");
+        
+        dragHandle.style.margin = "0 8px";
     }
 }
 
@@ -287,7 +285,11 @@ if (switchOrientationBtn) {
         isVertical = !isVertical;
 
         localStorage.setItem("orientation", isVertical.toString());
-        applyOrientation();
+        
+        // Use setTimeout to ensure DOM updates before layout calculations
+        setTimeout(() => {
+            applyOrientation();
+        }, 50);
     });
 }
 
@@ -366,6 +368,7 @@ if (dragHandle && editorContainer && consoleContainer) {
         }
     });
 }
+
 function resetPartition() {
     if (isVertical) {
         const totalHeight = mainContainer.offsetHeight - 16;
@@ -379,6 +382,9 @@ function resetPartition() {
         consoleContainer.style.flex = `0 0 ${halfWidth}px`;
     }
 
+    // Force layout recalculation
+    mainContainer.offsetHeight;
+    
     if (window.editor) {
         window.editor.layout();
     }
@@ -395,11 +401,12 @@ window.addEventListener("load", function () {
         consoleFirstPosition();
     }
 
-    // Apply the correct orientation
-    applyOrientation();
-
-    // Set proper sizing
-    setTimeout(resetPartition, 100);
+    // Apply the correct orientation with delay to ensure DOM is ready
+    setTimeout(() => {
+        applyOrientation();
+        // Set proper sizing
+        setTimeout(resetPartition, 100);
+    }, 50);
 });
 
 window.addEventListener(
