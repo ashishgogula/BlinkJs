@@ -13,18 +13,34 @@
 
 <body class="bg-black text-white p-4 h-screen overflow-hidden">
 
-    <div class="flex flex-col h-full" id="mainContainer">
+    <div class="flex flex-col h-full w-full" id="mainContainer">
         <div id="editorContainer"
             class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex-1 flex flex-col"
             style="min-height: 0;">
             <div class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex items-center cursor-move transition-all duration-300 hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0"
                 id="editorHeader">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <span class="text-green-400">script.js</span>
+                <div class="flex items-center flex-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    <span class="text-green-400">script.js</span>
+
+                </div>
+                <div class="py-1 flex gap-2">
+                    <button id="switchPositionBtn"
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                        aria-label="Toggle editor/console positions"
+                        >
+                    </button>
+                    <button id="switchOrientationBtn"
+                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                        aria-label="Toggle horizontal/vertical layout"
+                        >
+                        Switch Orientation
+                    </button>
+                </div>
             </div>
             <div id="editor" class="flex-1 overflow-hidden"></div>
         </div>
@@ -39,14 +55,16 @@
             <div class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 border-b border-green-500 border-opacity-30 flex justify-between items-center cursor-move hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0"
                 id="consoleHeader">
                 <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     <span class="text-green-400">Console</span>
                 </div>
+
                 <div class="py-1 flex gap-2">
+
                     <button id="clearConsoleBtn"
                         class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
                         Clear
