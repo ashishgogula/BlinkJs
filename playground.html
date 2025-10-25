@@ -4,30 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Playground</title>
+    <title>Blink JS</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/js-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        #editorContainer, #consoleContainer {
+        #editorContainer,
+        #consoleContainer {
             min-width: 0;
             min-height: 0;
             overflow: hidden;
         }
-        
+
         #mainContainer {
             gap: 0;
         }
-        
-        #dragHandle {
-        }
+
+        #dragHandle {}
     </style>
 </head>
 
-<body class="bg-black text-white p-4 h-screen overflow-hidden">
+<body class="bg-black text-white h-screen overflow-hidden">
+    <nav class="flex items-center justify-between flex-wrap bg-black pt-4 m-0 px-4">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <span class="font-semibold text-xl text-green-500">BlinkJS - JS Playground</span>
+        </div>
+        <div class="flex gap-2">
+            <button id="switchPositionBtn"
+                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                aria-label="Toggle editor/console positions">
+            </button>
+            <button id="switchOrientationBtn"
+                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                aria-label="Toggle horizontal/vertical layout">
+                Switch Orientation
+            </button>
+            <button id="homeBtn" onclick="window.location.href='index.html'"
+                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                Home
+            </button>
 
-    <div class="flex flex-col h-full w-full" id="mainContainer">
+        </div>
+    </nav>
+
+    <div class="flex flex-col h-[calc(100vh-6rem)] w-full p-4" id="mainContainer">
         <div id="editorContainer"
             class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex flex-col"
             style="min-height: 0; flex: 1;">
@@ -41,19 +64,7 @@
                     </svg>
                     <span class="text-green-400">script.js</span>
                 </div>
-                <div class="py-1 flex gap-2">
-                    <button id="switchPositionBtn"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
-                        aria-label="Toggle editor/console positions"
-                        >
-                    </button>
-                    <button id="switchOrientationBtn"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
-                        aria-label="Toggle horizontal/vertical layout"
-                        >
-                        Switch Orientation
-                    </button>
-                </div>
+
             </div>
             <div id="editor" class="flex-1 overflow-hidden"></div>
         </div>
@@ -80,10 +91,6 @@
                     <button id="clearConsoleBtn"
                         class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
                         Clear
-                    </button>
-                    <button id="homeBtn" onclick="window.location.href='index.html'"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
-                        Home
                     </button>
                 </div>
             </div>
