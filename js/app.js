@@ -152,24 +152,6 @@ function debounce(fn, delay) {
     };
 }
 
-const clearConsoleBtn = document.getElementById("clearConsoleBtn");
-
-window.addEventListener("load", () => {
-    if (window.editor) {
-        window.editor.layout();
-    }
-});
-
-if (clearConsoleBtn) {
-    clearConsoleBtn.addEventListener("click", function () {
-        clearConsole();
-        this.classList.add("bg-blue-700");
-        setTimeout(() => {
-            this.classList.remove("bg-blue-700");
-        }, 200);
-    });
-}
-
 // ==================== SWITCH POSITION SVGS ====================
 
 const upDownArrow = `<img src='assets/upDownArrow.svg' alt="Switch Positions"/>`;
