@@ -32,22 +32,43 @@
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <span class="font-semibold text-xl text-green-500">BlinkJS - JS Playground</span>
         </div>
+
         <div class="flex gap-2">
-            <button id="switchPositionBtn"
-                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
-                aria-label="Toggle editor/console positions">
-            </button>
-            <button id="switchOrientationBtn"
-                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
-                aria-label="Toggle horizontal/vertical layout">
-                Switch Orientation
-            </button>
-            <button id="homeBtn" onclick="window.location.href='index.html'"
-                class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
-                Home
-            </button>
+            <div>
+                <label
+                    class="flex items-center gap-2 font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95 cursor-pointer select-none">
+                    <input type="checkbox" id="autoCompileToggle" checked class="w-4 h-4 accent-black cursor-pointer" />
+                    Auto Compile
+                </label>
+            </div>
+            <div class="relative group">
+                <button id="runBtn"
+                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                    Run
+                </button>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <div class="flex gap-2">
+                <button id="switchPositionBtn"
+                    class="font-mono px-2 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                    aria-label="Toggle editor/console positions">
+                </button>
+
+                <button id="switchOrientationBtn"
+                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+                    aria-label="Toggle horizontal/vertical layout">
+                    Switch Orientation
+                </button>
+
+                <button id="homeBtn" onclick="window.location.href='index.html'"
+                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                    Home
+                </button>
+            </div>
 
         </div>
+
     </nav>
 
     <div class="flex flex-col h-[calc(100vh-6rem)] w-full p-4" id="mainContainer">
