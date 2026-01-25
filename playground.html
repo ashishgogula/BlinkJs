@@ -16,8 +16,14 @@
         #consoleContainer {
             min-width: 0;
             min-height: 0;
-            overflow: hidden;
+            overflow: visible;
         }
+
+        #editor,
+        #consoleOutput {
+            overflow: auto;
+        }
+
 
         #mainContainer {
             gap: 0;
@@ -73,18 +79,46 @@
 
     <div class="flex flex-col h-[calc(100vh-6rem)] w-full p-4" id="mainContainer">
         <div id="editorContainer"
-            class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex flex-col"
+            class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex flex-col overflow-visible"
             style="min-height: 0; flex: 1;">
-            <div class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex items-center cursor-move transition-all duration-300 hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0"
-                id="editorHeader">
-                <div class="flex items-center flex-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                    <span class="text-green-400">script.js</span>
+            <div id="editorHeader"
+                class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex items-center cursor-move transition-all duration-300 hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0 overflow-visible relative z-[10000]">
+
+
+                <div class="flex items-center justify-between w-full">
+
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span class="text-green-400">script.js</span>
+                    </div>
+
+                    <div class="relative" id="editorMenuWrapper">
+                        <button id="editorMenuBtn"
+                            class="font-mono px-2 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                            ⋯
+                        </button>
+
+                        <div id="editorMenu"
+                            class="hidden absolute right-0 mt-2 w-44 rounded-lg border border-green-500/30 bg-black/90 backdrop-blur-lg shadow-xl overflow-hidden z-[20000]">
+
+                            <button id="clearEditorBtn"
+                                class="w-full text-left px-4 py-2 font-mono text-sm text-green-300 hover:bg-green-500 hover:text-black transition">
+                                Clear script
+                            </button>
+
+                            <button id="resetEditorBtn"
+                                class="w-full text-left px-4 py-2 font-mono text-sm text-green-300 hover:bg-green-500 hover:text-black transition">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
+
 
             </div>
             <div id="editor" class="flex-1 overflow-hidden"></div>
