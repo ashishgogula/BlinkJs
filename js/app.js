@@ -9,11 +9,7 @@ require(["vs/editor/editor.main"], function () {
     rules: [
       { token: "", foreground: "e0e0e0", background: "0a0a0a" },
       { token: "keyword", foreground: "22c55e", fontStyle: "bold italic" },
-      {
-        token: "keyword.control",
-        foreground: "22c55e",
-        fontStyle: "bold italic",
-      },
+      { token: "keyword.control", foreground: "22c55e", fontStyle: "bold italic" },
       { token: "number", foreground: "86efac", fontStyle: "italic" },
       { token: "string", foreground: "4ade80", fontStyle: "italic" },
       { token: "comment", foreground: "6b7280", fontStyle: "italic" },
@@ -31,14 +27,16 @@ require(["vs/editor/editor.main"], function () {
     },
   });
 
-  window.editor = monaco.editor.create(document.getElementById("editor"), {
-    value: `// Welcome to JS Playground
+  const DEFAULT_CODE = `// Welcome to JS Playground
 console.log('Hello World');
 
 // Try editing me
 for (let i = 0; i < 3; i++) {
   console.log(\`Count: \${i}\`);
-}`,
+}`;
+
+  window.editor = monaco.editor.create(document.getElementById("editor"), {
+    value: DEFAULT_CODE,
     language: "javascript",
     theme: "blinkjs-dark",
     automaticLayout: true,
@@ -52,7 +50,7 @@ for (let i = 0; i < 3; i++) {
     smoothScrolling: true,
     cursorBlinking: "smooth",
   });
-  
+
   window.editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
     runCode();
   });
@@ -79,7 +77,7 @@ for (let i = 0; i < 3; i++) {
       if (autoCompileEnabled) {
         runCode();
       }
-    }, 300),
+    }, 300)
   );
 
   setTimeout(() => {
@@ -87,7 +85,53 @@ for (let i = 0; i < 3; i++) {
       runCode();
     }
   }, 500);
+
+  const editorMenuWrapper = document.getElementById("editorMenuWrapper");
+  const editorMenuBtn = document.getElementById("editorMenuBtn");
+  const editorMenu = document.getElementById("editorMenu");
+  const clearEditorBtn = document.getElementById("clearEditorBtn");
+  const resetEditorBtn = document.getElementById("resetEditorBtn");
+
+  function clearEditor() {
+    window.editor.setValue("");
+    window.editor.focus();
+  }
+
+  function resetEditor() {
+    window.editor.setValue(DEFAULT_CODE);
+    window.editor.focus();
+  }
+
+
+  editorMenuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    editorMenu.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!editorMenuWrapper.contains(e.target)) {
+      editorMenu.classList.add("hidden");
+    }
+  });
+
+  clearEditorBtn.addEventListener("click", () => {
+    clearEditor();
+    editorMenu.classList.add("hidden");
+  });
+
+  resetEditorBtn.addEventListener("click", () => {
+    resetEditor();
+    editorMenu.classList.add("hidden");
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      editorMenu.classList.add("hidden");
+    }
+  });
 });
+
+
 
 const consoleOutput = document.getElementById("consoleOutput");
 const homeBtn = document.getElementById("homeBtn");
