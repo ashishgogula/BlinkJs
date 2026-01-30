@@ -9,7 +9,11 @@ require(["vs/editor/editor.main"], function () {
     rules: [
       { token: "", foreground: "e0e0e0", background: "0a0a0a" },
       { token: "keyword", foreground: "22c55e", fontStyle: "bold italic" },
-      { token: "keyword.control", foreground: "22c55e", fontStyle: "bold italic" },
+      {
+        token: "keyword.control",
+        foreground: "22c55e",
+        fontStyle: "bold italic",
+      },
       { token: "number", foreground: "86efac", fontStyle: "italic" },
       { token: "string", foreground: "4ade80", fontStyle: "italic" },
       { token: "comment", foreground: "6b7280", fontStyle: "italic" },
@@ -51,9 +55,11 @@ for (let i = 0; i < 3; i++) {
     cursorBlinking: "smooth",
   });
 
-  window.editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-    runCode();
-  });
+  // Ctrl / Cmd + Enter → Run
+  window.editor.addCommand(
+    monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+    runCode,
+  );
 
   const autoCompileToggle = document.getElementById("autoCompileToggle");
   const runBtn = document.getElementById("runBtn");
@@ -62,74 +68,78 @@ for (let i = 0; i < 3; i++) {
 
   autoCompileToggle.addEventListener("change", (e) => {
     autoCompileEnabled = e.target.checked;
-
-    if (autoCompileEnabled) {
-      runCode();
-    }
+    if (autoCompileEnabled) runCode();
   });
 
-  runBtn.addEventListener("click", () => {
-    runCode();
-  });
+  runBtn.addEventListener("click", runCode);
 
   window.editor.onDidChangeModelContent(
     debounce(() => {
-      if (autoCompileEnabled) {
-        runCode();
-      }
-    }, 300)
+      if (autoCompileEnabled) runCode();
+    }, 300),
   );
 
   setTimeout(() => {
-    if (autoCompileEnabled) {
-      runCode();
-    }
+    if (autoCompileEnabled) runCode();
   }, 500);
 
   const editorMenuWrapper = document.getElementById("editorMenuWrapper");
   const editorMenuBtn = document.getElementById("editorMenuBtn");
   const editorMenu = document.getElementById("editorMenu");
   const clearEditorBtn = document.getElementById("clearEditorBtn");
-  const resetEditorBtn = document.getElementById("resetEditorBtn");
+  const clearEditorDesktopBtn = document.getElementById(
+    "clearEditorDesktopBtn",
+  );
 
   function clearEditor() {
     window.editor.setValue("");
     window.editor.focus();
   }
 
-  function resetEditor() {
-    window.editor.setValue(DEFAULT_CODE);
-    window.editor.focus();
+  if (clearEditorDesktopBtn) {
+    clearEditorDesktopBtn.addEventListener("click", clearEditor);
   }
 
+  if (editorMenuBtn && editorMenu) {
+    editorMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      editorMenu.classList.toggle("hidden");
+    });
 
-  editorMenuBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    editorMenu.classList.toggle("hidden");
-  });
+    document.addEventListener("click", (e) => {
+      if (editorMenuWrapper && !editorMenuWrapper.contains(e.target)) {
+        editorMenu.classList.add("hidden");
+      }
+    });
 
-  document.addEventListener("click", (e) => {
-    if (!editorMenuWrapper.contains(e.target)) {
-      editorMenu.classList.add("hidden");
-    }
-  });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        editorMenu.classList.add("hidden");
+      }
+    });
+  }
 
-  clearEditorBtn.addEventListener("click", () => {
-    clearEditor();
-    editorMenu.classList.add("hidden");
-  });
+  if (clearEditorBtn) {
+    clearEditorBtn.addEventListener("click", () => {
+      clearEditor();
+      editorMenu?.classList.add("hidden");
+    });
+  }
+  
+  const autoDesktop = document.getElementById("autoCompileToggle");
+  const autoMobile = document.getElementById("autoCompileToggleMobile");
 
-  resetEditorBtn.addEventListener("click", () => {
-    resetEditor();
-    editorMenu.classList.add("hidden");
-  });
+  if (autoDesktop && autoMobile) {
+    autoMobile.checked = autoDesktop.checked;
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      editorMenu.classList.add("hidden");
-    }
-  });
+    autoMobile.addEventListener("change", () => {
+      autoDesktop.checked = autoMobile.checked;
+      autoDesktop.dispatchEvent(new Event("change"));
+    });
+  }
 });
+
+
 
 
 
@@ -225,13 +235,11 @@ function debounce(fn, delay) {
   };
 }
 
-// ==================== SWITCH POSITION SVGS ====================
 
 const upDownArrow = `<img src='assets/upDownArrow.svg' alt="Switch Positions"/>`;
 
 const leftRightArrow = `<img src='assets/leftRightArrow.svg' alt="Switch Positions"/>`;
 
-// ==================== ELEMENT REFERENCES ====================
 
 const dragHandle = document.getElementById("dragHandle");
 const editorContainer = document.getElementById("editorContainer");
@@ -239,8 +247,6 @@ const consoleContainer = document.getElementById("consoleContainer");
 const mainContainer = document.getElementById("mainContainer");
 const switchPositionBtn = document.getElementById("switchPositionBtn");
 const switchOrientationBtn = document.getElementById("switchOrientationBtn");
-
-// ==================== SWITCH POSITION ====================
 
 let isEditorFirst = true;
 
@@ -283,7 +289,6 @@ if (switchPositionBtn) {
   });
 }
 
-// ==================== SWITCH ORIENTATION ====================
 let isVertical = true;
 
 if (localStorage.getItem("orientation") !== null)
@@ -340,7 +345,6 @@ if (switchOrientationBtn) {
 
     localStorage.setItem("orientation", isVertical.toString());
 
-    // Use setTimeout to ensure DOM updates before layout calculations
     setTimeout(() => {
       applyOrientation();
     }, 50);
@@ -375,7 +379,6 @@ if (dragHandle && editorContainer && consoleContainer) {
       const newConsoleHeight =
         consoleContainer.offsetHeight + (isEditorFirst ? -deltaY : deltaY);
 
-      // Min height constraint: 100px
       if (newEditorHeight > 100 && newConsoleHeight > 100) {
         editorContainer.style.flex = `0 0 ${newEditorHeight}px`;
         consoleContainer.style.flex = `0 0 ${newConsoleHeight}px`;
@@ -432,7 +435,6 @@ function resetPartition() {
     consoleContainer.style.flex = `0 0 ${halfWidth}px`;
   }
 
-  // Force layout recalculation
   mainContainer.offsetHeight;
 
   if (window.editor) {
@@ -440,21 +442,17 @@ function resetPartition() {
   }
 }
 
-// Double-click to reset to 50/50
 dragHandle.addEventListener("dblclick", resetPartition);
 
 window.addEventListener("load", function () {
-  // Set correct positions
   if (isEditorFirst) {
     editorFirstPosition();
   } else {
     consoleFirstPosition();
   }
 
-  // Apply the correct orientation with delay to ensure DOM is ready
   setTimeout(() => {
     applyOrientation();
-    // Set proper sizing
     setTimeout(resetPartition, 100);
   }, 50);
 });

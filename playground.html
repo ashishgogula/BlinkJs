@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blink JS</title>
+
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="apple-touch-icon" href="assets/js-logo.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
+
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
         #editorContainer,
         #consoleContainer {
@@ -24,103 +28,137 @@
             overflow: auto;
         }
 
-
         #mainContainer {
             gap: 0;
         }
-
-        #dragHandle {}
     </style>
 </head>
 
 <body class="bg-black text-white h-screen overflow-hidden">
-    <nav class="flex items-center justify-between flex-wrap bg-black pt-4 m-0 px-4">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-            <span class="font-semibold text-xl text-green-500">BlinkJS - JS Playground</span>
+
+    <nav class="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-black pt-4 px-4 gap-2">
+
+        <div class="flex items-center flex-shrink-0 text-white">
+            <span class="font-semibold text-lg sm:text-xl text-green-500">
+                BlinkJS - JS Playground
+            </span>
         </div>
 
-        <div class="flex gap-2">
-            <div>
-                <label
-                    class="flex items-center gap-2 font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95 cursor-pointer select-none">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto">
+
+            <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-end">
+
+                <label class="hidden sm:flex items-center gap-2 font-mono px-3 py-1
+                           text-black bg-green-500 hover:bg-green-400
+                           rounded-md transition-all font-semibold
+                           cursor-pointer select-none">
                     <input type="checkbox" id="autoCompileToggle" checked class="w-4 h-4 accent-black cursor-pointer" />
                     Auto Compile
                 </label>
-            </div>
-            <div class="relative group">
-                <button id="runBtn"
-                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
-                    Run
-                </button>
-            </div>
-        </div>
-        <div class="flex gap-2">
-            <div class="flex gap-2">
-                <button id="switchPositionBtn"
-                    class="font-mono px-2 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
-                    aria-label="Toggle editor/console positions">
+
+                <button id="switchPositionBtn" class="font-mono w-9 h-9 flex items-center justify-center
+                           text-black bg-green-500 hover:bg-green-400
+                           rounded-md transition-colors font-semibold" aria-label="Toggle editor/console positions">
+                
+                    <!-- Inline SVG placeholder -->
+                    <svg id="switchIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h8" />
+                    </svg>
                 </button>
 
-                <button id="switchOrientationBtn"
-                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95"
+
+
+                <button id="switchOrientationBtn" class="font-mono px-3 py-1 text-black bg-green-500
+                           hover:bg-green-400 rounded-md transition-all font-semibold"
                     aria-label="Toggle horizontal/vertical layout">
                     Switch Orientation
                 </button>
 
-                <button id="homeBtn" onclick="window.location.href='index.html'"
-                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
+                <button id="homeBtn" onclick="window.location.href='index.html'" class="font-mono px-3 py-1 text-black bg-green-500
+                           hover:bg-green-400 rounded-md transition-all font-semibold">
                     Home
                 </button>
             </div>
 
-        </div>
+            <!-- Run (BOTTOM on mobile, INLINE on desktop) -->
+            <div class="flex justify-center sm:justify-end pt-1 sm:pt-0">
+                <button id="runBtn" class="font-mono px-6 py-2 sm:px-3 sm:py-1
+                           text-black bg-green-500 hover:bg-green-400
+                           rounded-md transition-all font-semibold active:scale-95">
+                    Run
+                </button>
+            </div>
 
+        </div>
     </nav>
 
+
+
+
     <div class="flex flex-col h-[calc(100vh-6rem)] w-full p-4" id="mainContainer">
+
         <div id="editorContainer"
             class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex flex-col overflow-visible"
             style="min-height: 0; flex: 1;">
+
             <div id="editorHeader"
                 class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex items-center cursor-move transition-all duration-300 hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0 overflow-visible relative z-[10000]">
 
-
                 <div class="flex items-center justify-between w-full">
 
-                    <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-400" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                         </svg>
-                        <span class="text-green-400">script.js</span>
+                        <span class="text-green-400 font-mono select-none">script.js</span>
                     </div>
 
-                    <div class="relative" id="editorMenuWrapper">
-                        <button id="editorMenuBtn"
-                            class="font-mono px-2 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
-                            ⋯
+                    <div class="flex items-center gap-2">
+
+                        <button id="clearEditorDesktopBtn" class="hidden sm:inline-flex items-center font-mono px-3 py-1
+                                   text-black bg-green-500 hover:bg-green-400 rounded-md
+                                   transition-all font-semibold active:scale-95">
+                            Clear
                         </button>
 
-                        <div id="editorMenu"
-                            class="hidden absolute right-0 mt-2 w-44 rounded-lg border border-green-500/30 bg-black/90 backdrop-blur-lg shadow-xl overflow-hidden z-[20000]">
-
-                            <button id="clearEditorBtn"
-                                class="w-full text-left px-4 py-2 font-mono text-sm text-green-300 hover:bg-green-500 hover:text-black transition">
-                                Clear script
+                        <div id="editorMenuWrapper" class="relative sm:hidden">
+                            <button id="editorMenuBtn" class="inline-flex items-center font-mono px-2 py-1
+                                       text-black bg-green-500 hover:bg-green-400 rounded-md
+                                       transition-all font-semibold active:scale-95">
+                                ⋯
                             </button>
 
-                            <button id="resetEditorBtn"
-                                class="w-full text-left px-4 py-2 font-mono text-sm text-green-300 hover:bg-green-500 hover:text-black transition">
-                                Reset
-                            </button>
+                            <div id="editorMenu" class="hidden absolute right-0 mt-2 w-44
+                                       rounded-lg border border-green-500/30
+                                       bg-black/90 backdrop-blur-lg shadow-xl
+                                       overflow-hidden z-[20000]">
+
+                                <label class="flex items-center gap-2 px-4 py-2
+                                           font-mono text-sm text-green-300
+                                           hover:bg-green-500 hover:text-black
+                                           cursor-pointer select-none">
+                                    <input type="checkbox" id="autoCompileToggleMobile"
+                                        class="w-4 h-4 accent-green-500 cursor-pointer" />
+                                    Auto Compile
+                                </label>
+
+                                <div class="border-t border-green-500/20"></div>
+
+                                <button id="clearEditorBtn" class="w-full text-left px-4 py-2
+                                           font-mono text-sm text-green-300
+                                           hover:bg-green-500 hover:text-black transition">
+                                    Clear
+                                </button>
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-
-
             </div>
+
             <div id="editor" class="flex-1 overflow-hidden"></div>
         </div>
 
@@ -131,8 +169,10 @@
         <div id="consoleContainer"
             class="draggable-block rounded-lg shadow-lg border border-green-500 border-opacity-30 flex flex-col"
             style="min-height: 0; flex: 1;">
-            <div class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex justify-between items-center cursor-move hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0"
-                id="consoleHeader">
+
+            <div id="consoleHeader"
+                class="header-drag-handle bg-black bg-opacity-60 backdrop-blur-lg px-4 py-2 border-b border-green-500 border-opacity-30 flex justify-between items-center cursor-move hover:bg-opacity-80 hover:border-opacity-60 flex-shrink-0">
+
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-green-400" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -142,13 +182,12 @@
                     <span class="text-green-400">Console</span>
                 </div>
 
-                <div class="py-1 flex gap-2">
-                    <button id="clearConsoleBtn" onclick="clearConsole()"
-                        class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 hover:scale-105 rounded-md transition-all font-semibold active:scale-95">
-                        Clear
-                    </button>
-                </div>
+                <button id="clearConsoleBtn" onclick="clearConsole()"
+                    class="font-mono px-3 py-1 text-black bg-green-500 hover:bg-green-400 rounded-md transition-all font-semibold">
+                    Clear
+                </button>
             </div>
+
             <div id="consoleOutput" class="p-3 overflow-auto flex-1"></div>
         </div>
     </div>
